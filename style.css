@@ -126,3 +126,7 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
 @media(min-width:1001px){.contact{grid-template-rows:1fr 104px}.contact footer{height:104px;min-height:104px}}
 @media(max-width:1000px){.footer-contacts{gap:18px;font-size:7px}.footer-contacts>*+*::before{left:-10px}}
 @media(max-width:650px){.contact footer .footer-center{grid-column:1/-1;grid-row:2;text-align:left}.contact footer .footer-center p{text-align:left}.footer-contacts{align-items:flex-start;flex-direction:column;gap:10px;white-space:normal}.footer-contacts>*+*::before{display:none}}
+
+/* Identificadores de seção sem numeração, com o título em destaque verde. */
+.section-id{color:var(--green)}
+.section-id span{display:none}
