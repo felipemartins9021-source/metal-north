@@ -134,3 +134,5 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
 /* Quatro áreas de atuação em uma grade equilibrada. */
 .solutions-grid{grid-template-columns:repeat(2,1fr)}
 @media(max-width:650px){.solutions-grid{grid-template-columns:1fr}}
+
+.solution-card>span{display:none}
