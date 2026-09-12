@@ -160,3 +160,8 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
   .site-header.scrolled .logo img{width:195px}
   .hero{padding-top:126px}
 }
+
+
+/* Indicador de scroll limpo: remove a linha móvel que atravessava o CTA. */
+.scroll-cue{bottom:18px}
+.scroll-cue i{display:none}
