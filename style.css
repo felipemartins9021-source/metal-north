@@ -138,13 +138,19 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
 .solution-card>span{display:none}
 
 
-/* Impede que o cabeçalho fixo sobreponha a chamada verde do hero. */
+/* Cabeçalho estável: elimina o aumento ao voltar ao topo e preserva o hero. */
+.site-header,.site-header.scrolled{height:94px}
+.site-header .logo img,.site-header.scrolled .logo img{width:280px;max-height:none}
 @media(min-width:1001px){
-  .hero{align-items:flex-start;padding-top:max(152px,16vh)}
+  .hero{align-items:flex-start;padding-top:max(142px,15vh)}
 }
 @media(min-width:701px) and (max-width:1000px){
-  .hero{padding-top:140px}
+  .site-header,.site-header.scrolled{height:92px}
+  .site-header .logo img,.site-header.scrolled .logo img{width:225px}
+  .hero{padding-top:128px}
 }
 @media(max-width:700px){
-  .hero{padding-top:126px}
+  .site-header,.site-header.scrolled{height:84px}
+  .site-header .logo img,.site-header.scrolled .logo img{width:210px}
+  .hero{padding-top:118px}
 }
