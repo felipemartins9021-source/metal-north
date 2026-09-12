@@ -139,24 +139,24 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
 
 
 /* Cabeçalho animado com limite seguro antes da chamada verde do hero. */
-.site-header{height:112px}
-.site-header.scrolled{height:82px}
-.site-header .logo img{width:330px;max-height:none}
-.site-header.scrolled .logo img{width:270px;max-height:none}
+.site-header{height:112px;transition:height .62s cubic-bezier(.22,1,.36,1),background-color .45s ease,backdrop-filter .45s ease}
+.site-header.scrolled{height:76px}
+.site-header .logo img{width:330px;max-height:none;transition:width .62s cubic-bezier(.22,1,.36,1)}
+.site-header.scrolled .logo img{width:250px;max-height:none}
 @media(min-width:1001px){
   .hero{align-items:flex-start;padding-top:max(152px,16vh)}
 }
 @media(min-width:701px) and (max-width:1000px){
   .site-header{height:104px}
-  .site-header.scrolled{height:82px}
+  .site-header.scrolled{height:76px}
   .site-header .logo img{width:280px}
-  .site-header.scrolled .logo img{width:225px}
+  .site-header.scrolled .logo img{width:215px}
   .hero{padding-top:140px}
 }
 @media(max-width:700px){
   .site-header{height:94px}
-  .site-header.scrolled{height:78px}
+  .site-header.scrolled{height:72px}
   .site-header .logo img{width:250px}
-  .site-header.scrolled .logo img{width:210px}
+  .site-header.scrolled .logo img{width:195px}
   .hero{padding-top:126px}
 }
