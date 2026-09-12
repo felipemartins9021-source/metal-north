@@ -162,6 +162,5 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
 }
 
 
-/* Indicador de scroll limpo: remove a linha móvel que atravessava o CTA. */
-.scroll-cue{bottom:18px}
-.scroll-cue i{display:none}
+/* Indicador de scroll removido. */
+.scroll-cue{display:none!important}
