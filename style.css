@@ -136,3 +136,15 @@ html{scrollbar-width:none}html::-webkit-scrollbar{display:none}
 @media(max-width:650px){.solutions-grid{grid-template-columns:1fr}}
 
 .solution-card>span{display:none}
+
+
+/* Impede que o cabeçalho fixo sobreponha a chamada verde do hero. */
+@media(min-width:1001px){
+  .hero{align-items:flex-start;padding-top:max(152px,16vh)}
+}
+@media(min-width:701px) and (max-width:1000px){
+  .hero{padding-top:140px}
+}
+@media(max-width:700px){
+  .hero{padding-top:126px}
+}
