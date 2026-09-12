@@ -75,7 +75,11 @@
 
     <section class="panel contact content-pad" id="contato">
       <div class="contact-intro reveal"><p class="section-id">Contato</p><h2>Vamos conversar<br>sobre seu <em>projeto.</em></h2><p>Conte o desafio. Nossa equipe retorna com o próximo passo.</p><div class="contact-details"><a href="https://wa.me/5541997272641" target="_blank" rel="noopener"><small>WhatsApp</small>Falar pelo WhatsApp <span>↗</span></a><a href="mailto:felipe.metalnorth@gmail.com"><small>E-mail</small>felipe.metalnorth@gmail.com <span>↗</span></a><div><small>Localização</small>Brasil — atendimento nacional</div></div></div>
-      <form class="contact-form reveal delay-1" id="contact-form">
+      <form class="contact-form reveal delay-1" id="contact-form" action="https://formsubmit.co/felipe.metalnorth@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="Nova solicitação pelo site — Metal North">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
         <label>Nome<input type="text" name="nome" required placeholder="Seu nome"></label><label>Empresa<input type="text" name="empresa" placeholder="Nome da empresa"></label><label>Telefone<input type="tel" name="telefone" required placeholder="(00) 00000-0000"></label><label>E-mail<input type="email" name="email" required placeholder="voce@empresa.com.br"></label>
         <label class="full">Serviço de interesse<select name="servico" required><option value="">Selecione uma solução</option><option>Projetos mecânicos</option><option>Desenvolvimento de máquinas sob demanda</option><option>Soldagem</option><option>Estruturas metálicas em geral</option></select></label>
         <label class="full">Mensagem<textarea name="mensagem" rows="3" required placeholder="Descreva brevemente sua necessidade"></textarea></label>
@@ -92,6 +96,6 @@
       </footer>
     </section>
   </main>
-  <script src="script.js?v=20260912-5"></script>
+  <script src="script.js?v=20260912-8"></script>
 </body>
 </html>
