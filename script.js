@@ -17,7 +17,39 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   document.body.style.overflow = '';
 }));
 
-window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+// Anima o cabeçalho diretamente pelo scroll, sem depender da transição CSS.
+const headerLogo = header.querySelector('.logo img');
+let headerProgress = window.scrollY > 40 ? 1 : 0;
+let headerTarget = headerProgress;
+let headerFrame = null;
+
+function headerSizes() {
+  if (window.innerWidth <= 700) return { openHeight: 94, closedHeight: 72, openLogo: 250, closedLogo: 195 };
+  if (window.innerWidth <= 1000) return { openHeight: 104, closedHeight: 76, openLogo: 280, closedLogo: 215 };
+  return { openHeight: 112, closedHeight: 76, openLogo: 330, closedLogo: 250 };
+}
+
+function renderHeader() {
+  const size = headerSizes();
+  headerProgress += (headerTarget - headerProgress) * 0.14;
+  if (Math.abs(headerTarget - headerProgress) < 0.002) headerProgress = headerTarget;
+  header.style.height = (size.openHeight + (size.closedHeight - size.openHeight) * headerProgress) + 'px';
+  headerLogo.style.width = (size.openLogo + (size.closedLogo - size.openLogo) * headerProgress) + 'px';
+  if (headerProgress !== headerTarget) headerFrame = requestAnimationFrame(renderHeader);
+  else headerFrame = null;
+}
+
+function updateHeaderTarget() {
+  headerTarget = window.scrollY > 40 ? 1 : 0;
+  header.classList.toggle('scrolled', headerTarget === 1);
+  if (!headerFrame) headerFrame = requestAnimationFrame(renderHeader);
+}
+
+header.style.transitionProperty = 'background-color, backdrop-filter';
+headerLogo.style.transitionProperty = 'filter';
+window.addEventListener('scroll', updateHeaderTarget, { passive: true });
+window.addEventListener('resize', updateHeaderTarget, { passive: true });
+updateHeaderTarget();
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
