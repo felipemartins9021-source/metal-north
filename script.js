@@ -110,10 +110,49 @@ fileInput.addEventListener('change', () => {
   label.textContent = fileInput.files.length ? fileInput.files[0].name : 'Anexar desenho ou projeto';
 });
 
-document.querySelector('#contact-form').addEventListener('submit', event => {
+document.querySelector('#contact-form').addEventListener('submit', async event => {
   event.preventDefault();
-  const status = event.currentTarget.querySelector('.form-status');
-  status.textContent = 'Solicitação preparada. Em breve nossa equipe entrará em contato.';
-  event.currentTarget.reset();
-  document.querySelector('.file-input b').textContent = 'Anexar desenho ou projeto';
+
+  const form = event.currentTarget;
+  const status = form.querySelector('.form-status');
+  const button = form.querySelector('button[type="submit"]');
+  const formData = new FormData(form);
+  const selectedFile = fileInput.files.length ? fileInput.files[0].name : 'Nenhum';
+
+  const whatsappMessage = [
+    'Olá! Gostaria de solicitar um orçamento à Metal North.',
+    '',
+    'Nome: ' + (formData.get('nome') || ''),
+    'Empresa: ' + (formData.get('empresa') || 'Não informada'),
+    'Telefone: ' + (formData.get('telefone') || ''),
+    'E-mail: ' + (formData.get('email') || ''),
+    'Serviço: ' + (formData.get('servico') || ''),
+    'Mensagem: ' + (formData.get('mensagem') || ''),
+    'Arquivo informado: ' + selectedFile
+  ].join('\n');
+
+  window.open('https://wa.me/5541997272641?text=' + encodeURIComponent(whatsappMessage), '_blank', 'noopener');
+
+  status.textContent = 'Enviando uma cópia para o e-mail...';
+  button.disabled = true;
+  button.textContent = 'Enviando...';
+
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/felipe.metalnorth@gmail.com', {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' }
+    });
+
+    if (!response.ok) throw new Error('Falha no envio');
+
+    status.textContent = 'Solicitação enviada por e-mail. Confirme o envio na conversa do WhatsApp.';
+    form.reset();
+    document.querySelector('.file-input b').textContent = 'Anexar desenho ou projeto';
+  } catch (error) {
+    status.textContent = 'O WhatsApp foi aberto, mas o e-mail não pôde ser enviado. Tente novamente.';
+  } finally {
+    button.disabled = false;
+    button.innerHTML = 'Enviar solicitação <span>→</span>';
+  }
 });
